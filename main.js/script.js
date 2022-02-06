@@ -1,4 +1,11 @@
+const numbers = document.getElementsByClassName('numbers');
+const keys = document.getElementsByClassName('keys');
+const operations = document.getElementsByClassName('operations');
+const result_div = document.getElementsByTagName('span');
+
 let result = 0;
+
+
 
 function add(num1, num2){
     result = num1 + num2;
@@ -40,4 +47,20 @@ function operate(operator, num1, num2){
             divide(num1, num2);
             break;
     };
+};
+
+function displayResult(result){
+    result_div[0].innerHTML = `${result}`;
+};
+
+// Button function
+// numbers[0].forEach((number)=>{
+//     number.addEventListner('click', ()=>{
+//         console.log(number.innerHTML);
+//     });
+// });
+
+
+window.onload = function(){
+    displayResult(result);
 };
