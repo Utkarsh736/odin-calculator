@@ -1,4 +1,5 @@
-const numbers = document.getElementsByClassName('numbers');
+// const numbers = document.getElementsByClassName('numbers');
+const numbers = document.querySelectorAll("div.numbers");
 const keys = document.getElementsByClassName('keys');
 const operations = document.getElementsByClassName('operations');
 const result_div = document.getElementsByTagName('span');
@@ -54,12 +55,19 @@ function displayResult(result){
 };
 
 // Button function
-// numbers[0].forEach((number)=>{
-//     number.addEventListner('click', ()=>{
-//         console.log(number.innerHTML);
+// [...numbers].forEach((button)=>{
+//     button.addEventListener('click', ()=>{
+//         console.log(button);
 //     });
 // });
 
+console.log(numbers);
+
+numbers.forEach((button)=>{
+    button.addEventListener('click', ()=>{
+        console.log(button.id);
+    })
+})
 
 window.onload = function(){
     displayResult(result);
