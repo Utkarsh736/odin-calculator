@@ -53,29 +53,12 @@ function displayResult(result){
     result_div[0].innerHTML = `${result}`;
 };
 
-// Button function
-// [...numbers].forEach((button)=>{
-//     button.addEventListener('click', ()=>{
-//         console.log(button);
-//     });
-// });
-
-
 numbers[0].childNodes.forEach(item => {
     item.addEventListener('click', ()=>{
         let num_display = item.textContent;
         displayResult(num_display);
-        console.log(num_display);
-    })
-})
-
-// numbers.forEach(item =>{
-//     item.addEventListener('click', ()=>{
-//         console.log(item);
-//     })
-// })
-
-
+    });
+});
 
 
 window.onload = function(){
