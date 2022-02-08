@@ -1,8 +1,7 @@
-// const numbers = document.getElementsByClassName('numbers');
-const numbers = document.querySelectorAll("div.numbers");
-const keys = document.getElementsByClassName('keys');
-const operations = document.getElementsByClassName('operations');
-const result_div = document.getElementsByTagName('span');
+const numbers = document.querySelectorAll('.numbers');
+const keys = document.querySelectorAll('.keys');
+const operations = document.querySelectorAll('.operations');
+const result_div = document.querySelectorAll('.display');
 
 let result = 0;
 
@@ -61,7 +60,7 @@ function displayResult(result){
 //     });
 // });
 
-console.log(numbers);
+console.log(keys);
 
 numbers.forEach((button)=>{
     button.addEventListener('click', ()=>{
