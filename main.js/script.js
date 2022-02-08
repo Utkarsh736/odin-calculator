@@ -60,13 +60,23 @@ function displayResult(result){
 //     });
 // });
 
-console.log(keys);
 
-numbers.forEach((button)=>{
-    button.addEventListener('click', ()=>{
-        console.log(button.id);
+numbers[0].childNodes.forEach(item => {
+    item.addEventListener('click', ()=>{
+        let num_display = item.textContent;
+        displayResult(num_display);
+        console.log(num_display);
     })
 })
+
+// numbers.forEach(item =>{
+//     item.addEventListener('click', ()=>{
+//         console.log(item);
+//     })
+// })
+
+
+
 
 window.onload = function(){
     displayResult(result);
