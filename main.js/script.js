@@ -2,6 +2,9 @@ const numbers = document.querySelectorAll('.numbers');
 const keys = document.querySelectorAll('.keys');
 const operations = document.querySelectorAll('.operations');
 const result_div = document.querySelectorAll('.display');
+const clr_btn = document.querySelector('#clr');
+const dlt_btn = document.querySelector('#dlt');
+const eql_btn = document.querySelector('#eql');
 
 let result = 0;
 
