@@ -7,7 +7,7 @@ const dlt_btn = document.querySelector('#dlt');
 const eql_btn = document.querySelector('#eql');
 
 let result = 0;
-
+let value = '';
 
 
 function add(num1, num2){
@@ -58,12 +58,18 @@ function displayResult(result){
 
 numbers[0].childNodes.forEach(item => {
     item.addEventListener('click', ()=>{
-        let num_display = item.textContent;
-        displayResult(num_display);
+        value += item.textContent;
+        displayResult(value);
     });
 });
 
+clr_btn.addEventListener('click', ()=>{
+    displayResult(0);
+})
+
+// function clear(){};
+
 
 window.onload = function(){
-    displayResult(result);
+    displayResult(value);
 };
