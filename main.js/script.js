@@ -1,13 +1,17 @@
 const numbers = document.querySelectorAll('.numbers');
 const keys = document.querySelectorAll('.keys');
 const operations = document.querySelectorAll('.operations');
-const result_div = document.querySelectorAll('.display');
+// const result_div = document.querySelectorAll('.display');
+const display_prev = document.querySelector('.display_prev');
+const display_cur = document.querySelector('.display_cur');
 const clr_btn = document.querySelector('#clr');
 const dlt_btn = document.querySelector('#dlt');
 const eql_btn = document.querySelector('#eql');
 const DEFAULT_VALUE = 0;
+const STORE_VALUE = '';
 
 let result = DEFAULT_VALUE;
+let store_val  = STORE_VALUE;
 let value = '';
 let prev_val;
 let cur_val;
@@ -15,22 +19,22 @@ let operator;
 let flag = 0;
 
 function add(num1, num2){
-    result = num1 + num2;
+    result = parseFloat(num1) + parseFloat(num2);
     return result;
 };
 
 function subtract(num1, num2){
-    result = num1-num2;
+    result = parseFloat(num1)-parseFloat(num2);
     return result;
 };
 
 function multiply(num1, num2){
-    result = num1*num2
+    result = parseFloat(num1)*parseFloat(num2);
     return result;  
 };
 
 function divide(num1, num2){
-    result = num1/num2;
+    result = parseFloat(num1)/parseFloat(num2);
     return result;
 };
 
@@ -63,7 +67,8 @@ function store(val, operation){
         // prev_val = cur_val;
         result = operate(operation, prev_val, cur_val);
         console.log(`result: ${result}`);
-        // displayResult(result);
+        displayResult(result);
+
         console.log(`cur: ${cur_val}`)
         console.log(`prev: ${prev_val}`);
         console.log(`opert: ${operation}`);
@@ -78,8 +83,12 @@ function store(val, operation){
     };
 };
 
+function display_store(store_val){
+    display_prev.innerHTML = `${store_val}`;
+};
+
 function displayResult(result){
-    result_div[0].innerHTML = `${result}`;
+    display_cur.innerHTML = `${result}`;
 };
 
 function main(){
@@ -104,17 +113,17 @@ function main(){
 
 };
 
-
 operations[0].childNodes.forEach(operation =>{
     operation.addEventListener('click', ()=>{
         operator = operation.id;
         store(value, operator);
         value = '';
         displayResult(DEFAULT_VALUE);
-    })
-})
+    });
+});
 
 window.onload = function(){
     main();
     displayResult(result);
+    display_store(store_val);
 };
