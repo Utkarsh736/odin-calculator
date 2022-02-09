@@ -56,20 +56,23 @@ function displayResult(result){
     result_div[0].innerHTML = `${result}`;
 };
 
-numbers[0].childNodes.forEach(item => {
-    item.addEventListener('click', ()=>{
-        value += item.textContent;
-        displayResult(value);
+function main(){
+    numbers[0].childNodes.forEach(item => {
+        item.addEventListener('click', ()=>{
+            value += item.textContent;
+            displayResult(value);
+        });
     });
-});
-
-clr_btn.addEventListener('click', ()=>{
-    displayResult(0);
-})
+    
+    clr_btn.addEventListener('click', ()=>{
+        displayResult(0);
+    });
+};
 
 // function clear(){};
 
 
 window.onload = function(){
+    main();
     displayResult(value);
 };
