@@ -20,44 +20,36 @@ let operator;
 let flag = 0;
 
 function add(num1, num2){
-    result = parseFloat(num1) + parseFloat(num2);
-    return result;
+    return parseFloat(num1) + parseFloat(num2);
 };
 
 function subtract(num1, num2){
-    result = parseFloat(num1)-parseFloat(num2);
-    return result;
+    return parseFloat(num1)-parseFloat(num2);
 };
 
 function multiply(num1, num2){
-    result = parseFloat(num1)*parseFloat(num2);
-    return result;  
+    return parseFloat(num1)*parseFloat(num2);
 };
 
 function divide(num1, num2){
-    result = parseFloat(num1)/parseFloat(num2);
-    return result;
+    return parseFloat(num1)/parseFloat(num2);
 };
 
 
 function operate(operator, num1, num2){
     switch(operator){
 
-        case('add'):
-            add(num1, num2);
-            break;
+        case(add):
+            return add(num1, num2);
 
-        case('subtract'):
-            subtract(num1, num2);
-            break;
+        case(subtract):
+            return subtract(num1, num2);
 
-        case('multiply'):
-            multiply(num1, num2);
-            break;
+        case(multiply):
+            return multiply(num1, num2);
 
-        case('divide'):
-            divide(num1, num2);
-            break;
+        case(divide):
+            return divide(num1, num2);
     };
 };
 
@@ -65,13 +57,14 @@ function operate(operator, num1, num2){
 function cur_store(operator, value){
     cur_op = operator;
     cur_val = value;
-
+    result = operate(prev_op, prev_val, cur_val);
+    show_result(result);
     console.log(`cur: ${cur_val}`)
     console.log(`prev: ${prev_val}`);
     console.log(`opert: ${cur_op}`);
     console.log(`previous opert: ${prev_op}`);
     flag = 0;
-}
+};
 
 
 function prev_store(operator, value){
@@ -83,12 +76,16 @@ function prev_store(operator, value){
     flag = 1;
 };
 
+function show_result(result){
+    console.log(`Result: ${result}`);
+    display_result(result);
+};
 
 function display_store(store_val){
     display_prev.innerHTML = `${store_val}`;
 };
 
-function displayResult(result){
+function display_result(result){
     display_cur.innerHTML = `${result}`;
 };
 
@@ -96,7 +93,7 @@ function main(){
     numbers[0].childNodes.forEach(item => {
         item.addEventListener('click', ()=>{
             value += item.textContent;
-            displayResult(value);
+            display_result(value);
         });
     });
 
@@ -109,29 +106,27 @@ function main(){
             else if(flag==1){
                 cur_store(operator, value);
             };
-            
+
             value = '';
-            displayResult(DEFAULT_VALUE);
+            display_result(DEFAULT_VALUE);
         });
     });
     
     clr_btn.addEventListener('click', ()=>{
         value = '';
-        displayResult(0);
+        display_result(0);
     });
 
     eql_btn.addEventListener('click', ()=>{
         console.log(operator);
         console.log(prev_val);
         console.log(cur_val);
-        // operate(operator, prev_val, cur_val);
     });
 
 };
 
-
 window.onload = function(){
     main();
-    displayResult(result);
+    display_result(result);
     display_store(store_val);
 };
