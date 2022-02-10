@@ -76,6 +76,7 @@ function store(val, operation){
     }
     else if(flag==0){
         prev_val = val;
+        display_store(prev_val);
         console.log(`cur: ${cur_val}`)
         console.log(`prev: ${prev_val}`);
         console.log(`opert: ${operation}`);
