@@ -1,7 +1,6 @@
 const numbers = document.querySelectorAll('.numbers');
 const keys = document.querySelectorAll('.keys');
 const operations = document.querySelectorAll('.operations');
-// const result_div = document.querySelectorAll('.display');
 const display_prev = document.querySelector('.display_prev');
 const display_cur = document.querySelector('.display_cur');
 const clr_btn = document.querySelector('#clr');
@@ -15,6 +14,8 @@ let store_val  = STORE_VALUE;
 let value = '';
 let prev_val;
 let cur_val;
+let prev_op;
+let cur_op;
 let operator;
 let flag = 0;
 
@@ -61,28 +62,27 @@ function operate(operator, num1, num2){
 };
 
 
-function store(val, operation){
-    if(flag==1){
-        cur_val = val;
-        // prev_val = cur_val;
-        result = operate(operation, prev_val, cur_val);
-        console.log(`result: ${result}`);
-        displayResult(result);
+function cur_store(operator, value){
+    cur_op = operator;
+    cur_val = value;
 
-        console.log(`cur: ${cur_val}`)
-        console.log(`prev: ${prev_val}`);
-        console.log(`opert: ${operation}`);
-        flag = 0;
-    }
-    else if(flag==0){
-        prev_val = val;
-        display_store(prev_val);
-        console.log(`cur: ${cur_val}`)
-        console.log(`prev: ${prev_val}`);
-        console.log(`opert: ${operation}`);
-        flag = 1;
-    };
+    console.log(`cur: ${cur_val}`)
+    console.log(`prev: ${prev_val}`);
+    console.log(`opert: ${cur_op}`);
+    console.log(`previous opert: ${prev_op}`);
+    flag = 0;
+}
+
+
+function prev_store(operator, value){
+    prev_op = operator;
+    prev_val = value;
+    display_store(prev_val);
+    console.log(`prev: ${prev_val}`);
+    console.log(`opert: ${prev_op}`);
+    flag = 1;
 };
+
 
 function display_store(store_val){
     display_prev.innerHTML = `${store_val}`;
@@ -97,6 +97,21 @@ function main(){
         item.addEventListener('click', ()=>{
             value += item.textContent;
             displayResult(value);
+        });
+    });
+
+    operations[0].childNodes.forEach(operation =>{
+        operation.addEventListener('click', ()=>{
+            operator = operation.id;
+            if(flag == 0){
+                prev_store(operator, value);
+            }
+            else if(flag==1){
+                cur_store(operator, value);
+            };
+            
+            value = '';
+            displayResult(DEFAULT_VALUE);
         });
     });
     
@@ -114,14 +129,6 @@ function main(){
 
 };
 
-operations[0].childNodes.forEach(operation =>{
-    operation.addEventListener('click', ()=>{
-        operator = operation.id;
-        store(value, operator);
-        value = '';
-        displayResult(DEFAULT_VALUE);
-    });
-});
 
 window.onload = function(){
     main();
