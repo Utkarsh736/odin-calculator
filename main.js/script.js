@@ -54,18 +54,18 @@ function operate(operator, num1, num2){
 };
 
 
+function equal(value){
+    cur_val = value;
+    result = operate(prev_op, prev_val, cur_val);
+    show_result(result);
+    flag = 0;
+};
+
 function cur_store(operator, value){
-    if(operator=='equal'){
-        cur_val = value;
-        result = operate(prev_op, prev_val, cur_val);
-        show_result(result);
-    }
-    else{
     cur_op = operator;
     cur_val = value;
     result = operate(prev_op, prev_val, cur_val);
     show_result(result);
-    };
     flag = 0;
 };
 
@@ -119,7 +119,7 @@ function main(){
     });
 
     eql_btn.addEventListener('click', ()=>{
-        cur_store('equal', value);
+        equal(value);
     });
 
 };
