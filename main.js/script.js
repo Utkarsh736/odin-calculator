@@ -39,30 +39,33 @@ function divide(num1, num2){
 function operate(operator, num1, num2){
     switch(operator){
 
-        case(add):
+        case('add'):
             return add(num1, num2);
 
-        case(subtract):
+        case('subtract'):
             return subtract(num1, num2);
 
-        case(multiply):
+        case('multiply'):
             return multiply(num1, num2);
 
-        case(divide):
+        case('divide'):
             return divide(num1, num2);
     };
 };
 
 
 function cur_store(operator, value){
+    if(operator=='equal'){
+        cur_val = value;
+        result = operate(prev_op, prev_val, cur_val);
+        show_result(result);
+    }
+    else{
     cur_op = operator;
     cur_val = value;
     result = operate(prev_op, prev_val, cur_val);
     show_result(result);
-    console.log(`cur: ${cur_val}`)
-    console.log(`prev: ${prev_val}`);
-    console.log(`opert: ${cur_op}`);
-    console.log(`previous opert: ${prev_op}`);
+    };
     flag = 0;
 };
 
@@ -71,8 +74,6 @@ function prev_store(operator, value){
     prev_op = operator;
     prev_val = value;
     display_store(prev_val);
-    console.log(`prev: ${prev_val}`);
-    console.log(`opert: ${prev_op}`);
     flag = 1;
 };
 
@@ -118,12 +119,11 @@ function main(){
     });
 
     eql_btn.addEventListener('click', ()=>{
-        console.log(operator);
-        console.log(prev_val);
-        console.log(cur_val);
+        cur_store('equal', value);
     });
 
 };
+
 
 window.onload = function(){
     main();
