@@ -54,6 +54,13 @@ function operate(operator, num1, num2){
 };
 
 
+function clear(){
+    value = '';
+    display_result(0);
+    prev_val = '';
+    display_store(prev_val);
+};
+
 function equal(value){
     cur_val = value;
     result = operate(prev_op, prev_val, cur_val);
@@ -114,8 +121,7 @@ function main(){
     });
     
     clr_btn.addEventListener('click', ()=>{
-        value = '';
-        display_result(0);
+        clear()
     });
 
     eql_btn.addEventListener('click', ()=>{
