@@ -16,8 +16,10 @@ let prev_val;
 let cur_val;
 let prev_op;
 let cur_op;
+let equation;
 let operator;
 let flag = 0;
+
 
 function add(num1, num2){
     return parseFloat(num1) + parseFloat(num2);
@@ -86,6 +88,8 @@ function prev_store(operator, value){
 
 function show_result(result){
     console.log(`Result: ${result}`);
+    prev_val = '';
+    display_store(prev_val);
     display_result(result);
 };
 

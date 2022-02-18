@@ -4,7 +4,7 @@
 }
 
 .container{
-    border: 5px solid red;
+    /* border: 5px solid red; */
     height: 40rem;
     display: flex;
     flex-direction: column;
@@ -13,7 +13,7 @@
 }
 
 .header{
-    border: 5px solid black;
+    /* border: 5px solid black; */
     width: 100%;
     display: flex;
     justify-content: center;
@@ -41,7 +41,7 @@
 }
 
 .buttons{
-    border: 2px solid green;
+    /* border: 2px solid green; */
     height: 12rem;
     width: 100%;
     display: flex;
@@ -51,7 +51,7 @@
 }
 
 .footer{
-    border: 5px solid black;
+    /* border: 5px solid black; */
     width: 100%;
     display: flex;
     justify-content: center;
